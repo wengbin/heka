@@ -1,0 +1,91 @@
+
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title><?php echo $heka_data['title'];?></title>
+    <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/weiba.ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/base.css" />
+    <link rel="stylesheet" type="text/css" href="css/com.css" />
+    <link rel="stylesheet" type="text/css" href="css/n1.css" />
+	<script type="text/javascript" src="http://www.ygj.com.cn/template/default/vip/js/jquery.js"></script>
+	
+<style>
+
+    .popTit {
+    background: none repeat scroll 0 0 #333333;
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: bold;
+    height: 45px;
+    line-height: 45px;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    }
+	
+
+
+</style>
+<script>
+    $(function(){
+	     $(".saveBtn").click(function(){
+		     var content=$("#content").val();
+			 if(content.length>140){
+			     alert('贺卡内容超出140个字');
+				 return false;
+			 }
+		     var to=$("input[name='to']").val();
+			 if(to.length>20){
+			     alert('收卡人姓名超出20个字');
+				 return false;
+			 }
+			 var from=$("input[name='from']").val();
+			  if(to.length>20){
+			     alert('发卡人姓名超出20个字');
+				 return false;
+			 }
+			 var hid=$("input[name='hid']").val();
+			 var gid=$("input[name='gid']").val();
+			 var nochange=0;
+			 if(to==$("input[name='reciever']").val()&&from==$("input[name='poster']").val()&&content==$("input[name='content']").val())
+			 {
+			     nochange=1;
+			 }
+			 $.post('?mod=save',{to:to,from:from,content:content,hid:hid,gid:gid,nochange:nochange},function(res){
+			      if(res.error==1){
+				      alert(res.msg);
+				  }else if(res.error==0){
+				      if(res.gid){
+				          window.location.href="front.php?mod=xiangQing&gid="+res.gid;
+				      }else{
+					      window.location.href="front.php?mod=xiangQing&id="+res.hid;
+					  }
+				  }
+			 },"json")
+		 })
+	})
+</script>
+</head>
+<body>
+<div class="popTit"><span>编辑卡片信息</span><i class="check"><i class="back"></i></div>
+<input type="hidden" name="hid" value="<?php echo $hid;?>">
+<input type="hidden" name="gid" value="<?php if(isset($gid)){echo $gid;}?>">
+<input type="hidden" name="reciever" value="<?php echo $send_info['reciever'];?>">
+<input type="hidden" name="poster" value="<?php echo $send_info['poster'];?>">
+<input type="hidden" name="content" value="<?php echo $send_info['content'];?>">
+<div class="reciveName">
+  <input value="<?php echo $send_info['reciever'];?>" name="to" placeholder="输入收卡人" type="text" style="width:92%;height:50px;font-size:18px;margin:10px;margin-right:0px;background:#c7edcc;padding:5px;">
+</div>
+<div class="reciveText">
+  <textarea id="content" style="width:92%;height:100px;margin:10px;margin-right:0px;background:#c7edcc;border:none;padding:5px"><?php echo $send_info['content'];?></textarea>
+<div class="zin" style="float:right;font-size:18px;margin-right:10px;">你最多可以输入140个字符</div>
+</div>
+<div>
+  <input value="<?php echo $send_info['poster'];?>" name="from" placeholder="输入您的姓名" type="text" style="width:92%;height:40px;margin:5px;padding:5px;margin-left:10px;text-align:right;font-size:18px;background:#c7edcc;">
+</div>
+<div class="saveBtn" style="height:45px; line-height:40px; background:#333; color:#fff; text-align:center; font-size:20px; margin-top:10px;font-weight:bold;">保存并发送
+</div>
+</body>
+</html>

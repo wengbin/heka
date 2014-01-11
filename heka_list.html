@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>最专业的微信营销托管专家</title>
+<link href="http://www.ygj.com.cn/template/default/vip/css/bootstrap.css" rel="stylesheet">
+<link href="http://www.ygj.com.cn/template/default/vip/css/bootstrap-responsive.css"
+	rel="stylesheet">
+<link href="http://www.ygj.com.cn/template/default/vip/css/vip-common.css" rel="stylesheet">
+<script type="text/javascript" src="http://www.ygj.com.cn/template/default/vip/js/jquery.js"></script>
+<script type="text/javascript" src="http://www.ygj.com.cn/template/default/vip/js/bootstrap.min.js"></script>
+<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+      <script src="http://cdnjs.bootcss.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
+    <![endif]-->
+
+<script type="text/javascript">
+function del_heka(id){
+	if(!confirm("确认删除该贺卡？")){
+	   return false;
+	}
+	var url="vip.php?mod=del";
+	var post_id=$("input[name='post_id']").val();
+	$.post(url,{id:id,post_id:post_id},function(data){
+	      if(data.error==0){
+		        document.location.reload();
+		  }else{
+		       alert(data.msg);
+		  }
+	
+	},"json");
+	return false;
+	
+	
+}
+
+
+</script>
+
+<style type="text/css">
+
+</style>
+
+</head>
+<body>
+	<div id="container">
+		<div class="content">
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span12">
+						<h4>贺卡列表</h4>
+					    <a class="btn btn-primary" href="?mod=add" style="float:right;">添加贺卡</a>
+						<hr class="bs-docs-separator">
+				<input type="hidden" name="post_id" value="<?php echo $_SESSION["post_id"];?>">
+				<table class="table table-bordered table-striped table-hover">
+					<thead>
+						<tr>
+							<th style="width: 200px">贺卡名称</th>
+							<th style="width: 200px">添加时间</th>
+							<th style="width: 120px">背景图片</th>
+							<th style="width: 120px">背景音乐</th>
+							<th style="width: 400px">操作</th>
+						</tr>
+					</thead>
+					<tbody>  
+						<?php foreach($heka_list as $v):?>
+						<tr>
+							<td><strong><?php echo $v['title'];?></strong>
+							</td>
+							<td><?php echo $v['updatetime'];?>
+							</td>
+							<td>
+							  <img src="<?php echo $v['suolueUrl'];?>" style="width:150px;height:80px;">
+							</td>
+							<td>
+							  <?php if(!empty($v['songUrl'])):?>
+							  <audio src="<?php echo $v['songUrl'];?>" controls="controls" style="width:200px;margin-top:15px;">
+								您的浏览器不支持 audio 标签。
+								</audio>
+							   
+							  <?php endif;?>
+							</td>
+							<td>
+								<a href="?mod=edit&id=<?php echo $v['id'];?>" >修改</a>
+								<a href="" onclick="return del_heka(<?php echo $v['id'];?>);">删除</a> 
+							</td>
+						</tr>
+						<?php endforeach;?>
+						</tbody>
+					</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div style="display:none">
+</div>
+</body>
+</html>

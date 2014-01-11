@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>最专业的微信营销托管专家</title>
+<link href="http://www.ygj.com.cn/template/default/vip/css/bootstrap.css" rel="stylesheet">
+<link href="http://www.ygj.com.cn/template/default/vip/css/bootstrap-responsive.css"
+	rel="stylesheet">
+	<link href="http://www.ygj.com.cn/template/default/vip/css/dateinput.css" rel="stylesheet">
+<link href="http://www.ygj.com.cn/template/default/vip/css/vip-common.css" rel="stylesheet">
+<script type="text/javascript" src="http://www.ygj.com.cn/template/default/vip/js/jquery.js"></script>
+<script type="text/javascript"
+	src="http://www.ygj.com.cn/template/default/vip/js/jquery.tools.min.js"></script>
+<script type="text/javascript"
+	src="http://www.ygj.com.cn/template/default/vip/js/bootstrap.min.js"></script>
+<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+      <script src="http://cdnjs.bootcss.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
+    <![endif]-->
+<style>
+    img{
+	   margin-left:20px;
+	   width:180px;
+	   height:120px;
+	}
+</style>
+<script>
+     function check(){
+	      var tit=$("input[name='tit']").val();
+		  if(tit==''){
+		      alert('贺卡名称不能为空');
+			  return false;
+		  }
+	 }
+</script>
+</head>
+<body>
+	<div id="container">
+		<div class="content">
+			<div class="container-fluid">
+				<h4>贺卡添加</h4>
+				<h5><font color="red">图片尺寸为640*960</font></h5>
+				<hr class="bs-docs-separator">
+
+				<div class="row-fluid">
+					<div class="span8">
+						<form  class="form-horizontal" enctype="multipart/form-data" action='?mod=add_action'  method='post'>
+							<fieldset>
+                              <input type="hidden" name="post_id" value="<?php echo $_SESSION["post_id"];?>">
+								<div class="control-group">
+									<label for="input01" class="control-label"><font color="red">*</font><strong>贺卡名称</strong></label>
+									<div class="controls">
+										<input type="text" style="width:210px;" name='tit'
+											class="input-xlarge">
+									</div>
+									
+								</div>
+								
+								<div class="control-group">
+									<label for="input01" class="control-label"><font color="red">*</font><strong>背景图片</strong></label>
+									<div class="controls">
+										<input type="file" style="width:210px;" name='img'
+											class="input-xlarge">
+									</div>
+									
+								</div>
+								
+								<div class="control-group">
+									<label for="input01" class="control-label"><strong>背景音乐</strong></label>
+									<div class="controls">
+										<input type="file" style="width:210px;" name='song'
+											class="input-xlarge">
+									</div>
+									
+								</div>
+								<div class="form-actions">
+									<button class="btn btn-primary" type="submit" onclick="return check();">添加</button>
+									<a class="btn" href='#'>取消</a>
+								</div>								
+						  </form>		
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		$(":date").dateinput({
+			format : 'yyyy-mm-dd',
+			min : -1
+		});
+	</script>
+	<div style="display:none">
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fab48af2bc86f5e0f531d97122e74044b' type='text/javascript'%3E%3C/script%3E"));
+</script>
+</div>
+</body>
+</html>

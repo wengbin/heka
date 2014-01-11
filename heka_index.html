@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport"
+content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=0;">
+<script>
+	document.addEventListener('touchend', function() {}, false);
+</script>
+<title>贺卡</title>
+<link href="heka_index.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body id="heka">
+<div class="heka_wrap">
+   <h1>贺卡列表</h1>
+   <ul>
+     <?php foreach($hekas_data as $v):?>
+      <li>
+        <div class="img"><a href="front.php?mod=preview&id=<?php echo $v['id'];?>"><img src="<?php echo $v['suolueUrl'];?>" /></a></div>
+       <p><?php echo $v['title'];?></p><p>回复贺卡<span><?php echo $v['id'];?></span>获取</p>
+      </li>
+     <?php endforeach;?>
+      
+       
+      <div class="clfl"></div>
+   </ul>
+
+</div>
+<div class="heka_footer"><img src="heka_images/heka_footer.png"  /></div>
+</body>
+</html>
