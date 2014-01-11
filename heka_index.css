@@ -1,0 +1,83 @@
+@charset "utf-8";
+*{
+	margin:0;
+	padding:0;}
+.clfl{
+	clear:both;
+	float:none;}
+#heka {
+	background:url(heka_images/heka_top_bg.png) no-repeat 0 0  ,url(heka_images/heka_bg.png) repeat ;
+	background-size:100%;
+	padding-top:32%;
+}
+.heka_wrap{
+	width:266.8px;
+	margin-left:auto;
+	margin-right:auto;
+	border-radius:10px;
+	padding:0px 16.6px 0px 16.6px;
+	background:url(heka_images/hdj.png) no-repeat 0 0 #fff;
+	background-size:35px;
+	box-shadow:0px 0px 8px #000;}
+	
+.heka_wrap h1{
+	padding-bottom:10px;
+	color:#000;
+	font-size:18px;
+	text-align:center;
+	line-height:40px;
+	height:40px;}
+
+li{
+	list-style:none;
+	width:100px;
+	display:block;
+	
+	margin:0px 16.6px 15px 16.6px;
+	float:left;}
+	
+.img{
+	width:100px;
+	height:100px;
+	overflow:hidden;
+	border-radius:10px;}
+.img img{
+	width:100px;}
+li p{
+	font-family:"微软雅黑";
+	font-size:14px;
+	color:#000;
+	text-align:center;
+	display:block;}
+li p span{
+	color:#b61d22;}
+.heka_footer{
+	padding-top:20px;
+	width:100%;
+	}
+.heka_footer img{
+	width:100%;}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+ #heka01{
+	background:url(heka_images/001.gif) no-repeat 0 0 ;
+	background-size:100%;
+	}  
+
+
+
+
+
+
+
+
+
+
+
